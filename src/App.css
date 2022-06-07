@@ -1,38 +1,344 @@
-.App {
-  text-align: center;
+/*
+=============== 
+Variables
+===============
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap");
+
+:root {
+	/* Colors */
+	--red: #fc4747;
+	--blue: #5a698f;
+	--semi-dark-blue: #161d2f;
+	--dark-blue: #10141e;
+	--dark-blue-opacity: #10141ebd;
+	--white: #fff;
+	--white-opacity: rgba(255, 255, 255, 0.808);
+
+	/* Font */
+	font-family: "Outfit", sans-serif;
+
+	/* Font size */
+	--heading-l: 3.2rem;
+	--heading-m: 2.4rem;
+	--heading-s: 2.4rem;
+	--heading-xs: 1.8rem;
+	--body-m: 1.5rem;
+	--body-s: 1.3rem;
+
+	/* Spacing */
+	--space-3xs-2xs: clamp(0.31rem, calc(0.14rem + 0.85vw), 0.75rem);
+	--space-2xs-xs: clamp(0.69rem, calc(0.52rem + 0.85vw), 1.13rem);
+	--space-xs-s: clamp(1rem, calc(0.8rem + 0.98vw), 1.5rem);
+	--space-s-m: clamp(1.31rem, calc(0.95rem + 1.83vw), 2.25rem);
+	--space-m-l: clamp(2rem, calc(1.61rem + 1.95vw), 3rem);
+	--space-l-xl: clamp(2.63rem, calc(1.89rem + 3.66vw), 4.5rem);
+	--space-xl-2xl: clamp(3.94rem, calc(3.13rem + 4.02vw), 6rem);
+	--space-2xl-3xl: clamp(5.25rem, calc(3.79rem + 7.32vw), 9rem);
+	--space-3xl-4xl: clamp(7.88rem, calc(7.44rem + 2.2vw), 9rem);
+	--space-4xl-5xl: clamp(9.25rem, calc(6rem + 8vw), 12rem);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*
+=============== 
+Global classes
+===============
+*/
+
+body {
+	background-color: var(--dark-blue);
+	color: var(--white);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*
+=============== 
+Header
+===============
+*/
+
+.header {
+	background-color: var(--semi-dark-blue);
+	height: 6rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header__logo {
+	height: 2.2rem;
+	width: 2.8rem;
 }
 
-.App-link {
-  color: #61dafb;
+.header__nav {
+	display: flex;
+	justify-content: space-around;
+	gap: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header__nav-icon {
+	fill: #5a698f;
+}
+
+.header__nav-icon:is(:hover, :focus) > path {
+	fill: #fff;
+}
+
+.header__avatar {
+	height: 2.6rem;
+	width: 2.6rem;
+	border-radius: 50%;
+	box-shadow: 0px 0px 0px 0.2rem #ffffff;
+}
+
+/*
+=============== 
+Search
+===============
+*/
+
+.search {
+	height: 8rem;
+	display: flex;
+	gap: 1.6rem;
+	align-items: center;
+	padding-inline: 1.5rem;
+}
+
+.search__input {
+	width: 100%;
+	border: none;
+	padding: 1rem;
+	background-color: var(--dark-blue);
+	color: var(--white);
+	font-family: "Outfit", sans-serif;
+	font-size: var(--heading-xs);
+	font-weight: 200;
+	letter-spacing: 0.05rem;
+}
+
+/*
+=============== 
+Home
+===============
+*/
+
+.home {
+	display: flex;
+	flex-direction: column;
+	gap: 6rem;
+	padding: 1.5rem;
+	padding-bottom: 8rem;
+}
+
+/* Trending */
+
+.home__section {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.home__title {
+	font-size: var(--heading-l);
+	font-weight: 300;
+}
+
+.home__container {
+	display: flex;
+	gap: 2rem;
+}
+
+/* Swiper */
+
+.swiper {
+	height: 23rem;
+	width: 100%;
+}
+
+@media (max-width: 500px) {
+	.swiper {
+		height: 14rem;
+	}
+}
+
+.bloc {
+	background: var(--white);
+	height: 100%;
+	display: block;
+	position: relative;
+	cursor: pointer;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.bloc:is(:hover, :focus) .playContainer {
+	display: flex;
+}
+
+.card__txtContainer {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: 300;
+	font-size: var(--body-m);
+	margin: 8px 0 5px;
+	position: absolute;
+	top: 160px;
+	left: 16px;
+}
+
+@media (max-width: 500px) {
+	.card__txtContainer {
+		top: 80px;
+		font-size: var(--body-s);
+	}
+}
+
+.swiper-slide img {
+	display: bloc;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+
+.icon-card {
+	width: 16px !important;
+	height: 16px !important;
+	object-fit: unset;
+	display: unset;
+}
+
+.playContainer {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+	display: none;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.playBtn {
+	height: 5rem;
+	width: 12rem;
+	border-radius: 48px;
+	background: rgba(255, 255, 255, 0.3);
+	display: flex;
+	align-items: center;
+}
+
+.playBtn img {
+	height: 30px;
+	width: 30px;
+	margin: 0 19px 0 9px;
+}
+
+.playBtn p {
+	color: var(--white);
+	font-weight: 500;
+	font-size: var(--heading-xs);
+}
+
+.bookMarked {
+	height: 4rem;
+	width: 4rem;
+	position: absolute;
+	border-radius: 50%;
+	top: 1.6rem;
+	right: 1.6rem;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 4;
+}
+
+.bookMarked img {
+	width: 13px;
+	height: 16px;
+	object-fit: unset;
+}
+
+.bloc h3 {
+	color: var(--white);
+	font-weight: 500;
+	font-size: var(--heading-m);
+	position: absolute;
+	bottom: 10px;
+	left: 16px;
+}
+
+@media (max-width: 500px) {
+	.bloc h3 {
+		font-size: var(--heading-xs);
+	}
+}
+
+/* Recommended */
+
+.home__card {
+	min-height: 18rem;
+	border-radius: 0.8rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-self: flex-start;
+	padding: 1.2rem 1.2rem 2rem 2rem;
+	background-size: cover;
+}
+
+.home__card__bookmark {
+	align-self: flex-end;
+	width: max-content;
+	padding: 0.8rem 1rem;
+	background-color: var(--dark-blue-opacity);
+	border-radius: 50%;
+}
+
+.home__card__info {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.home__card__details {
+	display: flex;
+	flex-direction: row;
+	color: var(--white-opacity);
+	gap: 0.6rem;
+	font-size: var(--body-s);
+	font-weight: 200;
+}
+
+.home__card__title {
+	font-size: var(--heading-xs);
+	font-weight: 300;
+}
+
+.home__container-recommended {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	column-gap: 1.5rem;
+	row-gap: 2.5rem;
+}
+
+.home__card-container-recommended {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.home__card-recommended {
+	min-height: 11rem;
+	min-width: 16.4rem;
+	height: unset;
+	width: unset;
 }
