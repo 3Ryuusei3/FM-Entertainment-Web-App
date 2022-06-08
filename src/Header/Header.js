@@ -5,9 +5,9 @@ import avatar from "../assets/image-avatar.png";
 
 export default function Header() {
 	const location = useLocation();
-	return location.pathname === "/" &&
-		location.pathname === "/movies" &&
-		location.pathname === "/tv" &&
+	return location.pathname === "/" ||
+		location.pathname === "/movies" ||
+		location.pathname === "/tv" ||
 		location.pathname === "/bookmark" ? (
 		<nav className="header">
 			<a href="/">
