@@ -11,13 +11,15 @@ import { data } from "./Data.js";
 function App() {
 	return (
 		<BrowserRouter>
-			<Header />
-			<Routes>
-				<Route path="/" element={<Home data={data} />} />
-				<Route path="/movies" element={<Video data={data} />} />
-				<Route path="/tv" element={<Tv data={data} />} />
-				<Route path="/bookmark" element={<Bookmark data={data} />} />
-			</Routes>
+			<div className="app">
+				<Header />
+				<Routes>
+					<Route path="/" element={<Home data={data} />} />
+					<Route path="/movies" element={<Video data={data} />} />
+					<Route path="/tv" element={<Tv data={data} />} />
+					<Route path="/bookmark" element={<Bookmark data={data} />} />
+				</Routes>
+			</div>
 		</BrowserRouter>
 	);
 }

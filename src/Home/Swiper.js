@@ -29,7 +29,7 @@ const Swipper = ({ data }) => {
 		>
 			{dataTrending.map((data, idx) => (
 				<SwiperSlide className="bloc" key={idx}>
-					<img src={`${data.thumbnail.trending.large}`} alt={data.title} />
+					<img src={`${data.thumbnail.trending.small}`} alt={data.title} />
 					<div className="card__txtContainer">
 						<p>{data.year}</p>
 						<span>&#8226;</span>

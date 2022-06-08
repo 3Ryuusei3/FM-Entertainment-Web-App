@@ -20,7 +20,7 @@ export default function Home({ data }) {
 			<div
 				className="home__card home__card-recommended"
 				style={{
-					backgroundImage: `url(${data.thumbnail.regular.small})`,
+					backgroundImage: `url(${data.thumbnail.regular.large})`,
 				}}
 			>
 				<div className="home__card__bookmark">
