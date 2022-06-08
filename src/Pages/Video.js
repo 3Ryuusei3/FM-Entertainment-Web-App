@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import Swiper from "./Swiper";
+import React, { useState /* useEffect */ } from "react";
 import searchIcon from "../assets/icon-search.svg";
 import bookmarkEmptyIcon from "../assets/icon-bookmark-empty.svg";
 import bookmarkFullIcon from "../assets/icon-bookmark-full.svg";
 import moviesCategory from "../assets/icon-category-movie.svg";
 import tvCategory from "../assets/icon-category-tv.svg";
 
-export default function Home({ data }) {
-	const [dataNotTrending, setDataNotTrending] = useState(data.filter((data) => !data.isTrending));
+export default function Video({ data }) {
+	const [dataVideo, setDataVideo] = useState(data.filter((data) => data.category === "Movie"));
+
 	const dataHandler = (e) => {
 		if (e.target.value.length >= 1) {
-			setDataNotTrending(data.filter((data) => data.title.toLowerCase().includes(e.target.value.toLowerCase())));
+			setDataVideo(data.filter((data) => data.title.toLowerCase().includes(e.target.value.toLowerCase())));
 		} else {
-			setDataNotTrending(data.filter((data) => !data.isTrending));
+			setDataVideo(data.filter((data) => data.category === "Movie"));
 		}
 	};
-	const cardsMapping = dataNotTrending.map((data, idx) => (
+
+	const videoCardsMapping = dataVideo.map((data, idx) => (
 		<div key={idx} className="home__card-container-recommended">
 			<div
 				className="home__card home__card-recommended"
@@ -56,17 +57,13 @@ export default function Home({ data }) {
 					className="search__input"
 					id="search"
 					type="text"
-					placeholder="Search for movies or TV series"
+					placeholder="Search for movies"
 				/>
 			</div>
 			<div className="home__section">
-				<p className="home__title">Trending</p>
-				<Swiper data={data} />
-			</div>
-			<div className="home__section">
-				<p className="home__title">Recommended for you</p>
-				{dataNotTrending.length >= 1 ? (
-					<div className="home__container home__container-recommended">{cardsMapping}</div>
+				<p className="home__title">Movies</p>
+				{dataVideo.length >= 1 ? (
+					<div className="home__container home__container-recommended">{videoCardsMapping}</div>
 				) : (
 					<div className="errorHandler">
 						<svg xmlns="http://www.w3.org/2000/svg" stroke="white" fill="white" viewBox="0 0 32 32">

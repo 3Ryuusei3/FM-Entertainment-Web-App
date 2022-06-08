@@ -77,10 +77,6 @@ Header
 	gap: 3rem;
 }
 
-.header__nav-icon {
-	fill: #5a698f;
-}
-
 .header__nav-icon:is(:hover, :focus) > path {
 	fill: #fff;
 }
@@ -103,7 +99,6 @@ Search
 	display: flex;
 	gap: 1.6rem;
 	align-items: center;
-	padding-inline: 1.5rem;
 }
 
 .search__input {
@@ -127,7 +122,7 @@ Home
 .home {
 	display: flex;
 	flex-direction: column;
-	gap: 6rem;
+	gap: 2rem;
 	padding: 1.5rem;
 	padding-bottom: 8rem;
 }
@@ -138,6 +133,10 @@ Home
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
+}
+
+.home__section:nth-child(3) {
+	padding-top: 2rem;
 }
 
 .home__title {
@@ -325,7 +324,7 @@ Home
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	column-gap: 1.5rem;
+	column-gap: 2rem;
 	row-gap: 2.5rem;
 }
 
@@ -337,8 +336,37 @@ Home
 }
 
 .home__card-recommended {
-	min-height: 11rem;
-	min-width: 16.4rem;
+	min-height: 13rem;
+	min-width: 18rem;
 	height: unset;
 	width: unset;
+}
+
+/* Error not found */
+
+.errorHandler {
+	padding-top: 2rem;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+}
+
+.errorHandler svg {
+	width: 15rem;
+	height: 15rem;
+}
+
+@media (max-width: 500px) {
+	.errorHandler svg {
+		width: 10rem;
+		height: 10rem;
+	}
+}
+
+.errorHandler p {
+	font-size: var(--heading-m);
+	font-weight: 200;
 }
