@@ -23,7 +23,7 @@ Variables
 	--heading-l: 3.2rem;
 	--heading-m: 2.4rem;
 	--heading-s: 2.4rem;
-	--heading-xs: 1.8rem;
+	--heading-xs: 1.7rem;
 	--body-m: 1.5rem;
 	--body-s: 1.3rem;
 
@@ -324,7 +324,7 @@ Home
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	column-gap: 2rem;
+	column-gap: 1.5rem;
 	row-gap: 2.5rem;
 }
 
@@ -336,8 +336,8 @@ Home
 }
 
 .home__card-recommended {
-	min-height: 13rem;
-	min-width: 18rem;
+	min-height: 11rem;
+	min-width: 16.4rem;
 	height: unset;
 	width: unset;
 }
