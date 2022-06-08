@@ -392,6 +392,7 @@ Home
 	justify-items: start;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 15px;
+	row-gap: 3rem;
 }
 
 .home__card-container-recommended {
