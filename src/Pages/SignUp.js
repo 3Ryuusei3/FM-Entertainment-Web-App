@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/logo.svg";
 export default function SignUp() {
 	return (
-		<form action="" className="login">
+		<form action="" className="login signup">
 			<a href="/">
 				<img className="login-logo" src={logo} alt="Logo" />
 			</a>

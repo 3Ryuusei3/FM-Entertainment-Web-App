@@ -547,6 +547,9 @@ Login / Signup
 	.login {
 		padding-top: 10rem;
 	}
+	.signup {
+		padding-top: 5rem;
+	}
 }
 
 .login-logo {
