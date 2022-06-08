@@ -13,7 +13,7 @@ function App() {
 		<BrowserRouter>
 			<Header />
 			<Routes>
-				<Route path="/home" element={<Home data={data} />} />
+				<Route path="/" element={<Home data={data} />} />
 				<Route path="/movies" element={<Video data={data} />} />
 				<Route path="/tv" element={<Tv data={data} />} />
 				<Route path="/bookmark" element={<Bookmark data={data} />} />
