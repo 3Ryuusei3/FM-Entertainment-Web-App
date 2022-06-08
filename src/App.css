@@ -604,3 +604,8 @@ Login / Signup
 	padding-left: 1rem;
 	color: red;
 }
+
+.no-acc > a:hover {
+	padding-left: 1rem;
+	color: red;
+}
