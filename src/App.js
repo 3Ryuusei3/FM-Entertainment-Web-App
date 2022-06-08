@@ -6,6 +6,9 @@ import Home from "./Home/Home";
 import Video from "./Pages/Video";
 import Tv from "./Pages/Tv";
 import Bookmark from "./Pages/Bookmark";
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp.js";
+import ErrorPage from "./Pages/ErrorPage";
 import { data } from "./Data.js";
 
 function App() {
@@ -18,6 +21,9 @@ function App() {
 					<Route path="/movies" element={<Video data={data} />} />
 					<Route path="/tv" element={<Tv data={data} />} />
 					<Route path="/bookmark" element={<Bookmark data={data} />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<SignUp />} />
+					<Route path="/*" element={<ErrorPage />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

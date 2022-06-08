@@ -5,9 +5,14 @@ import avatar from "../assets/image-avatar.png";
 
 export default function Header() {
 	const location = useLocation();
-	return (
+	return location.pathname === "/" &&
+		location.pathname === "/movies" &&
+		location.pathname === "/tv" &&
+		location.pathname === "/bookmark" ? (
 		<nav className="header">
-			<img className="header__logo" src={logo} alt="Logo" />
+			<a href="/">
+				<img className="header__logo" src={logo} alt="Logo" />
+			</a>
 			<div className="header__nav">
 				<NavLink to="/">
 					<svg className="header__nav-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +47,11 @@ export default function Header() {
 					</svg>
 				</NavLink>
 			</div>
-			<img className="header__avatar" src={avatar} alt="Avatar" />
+			<a className="avatar-link" href="/login">
+				<img className="header__avatar" src={avatar} alt="Avatar" />
+			</a>
 		</nav>
+	) : (
+		<></>
 	);
 }

@@ -69,14 +69,23 @@ Header
 	padding-inline: 1.5rem;
 }
 
+@media (min-width: 700px) {
+	.header {
+		border-radius: 1.6rem;
+		height: 7rem;
+		margin: 2rem 2rem 0 2rem;
+		padding-inline: 3rem;
+	}
+}
+
 @media (min-width: 1400px) {
 	.header {
+		padding-block: 3rem;
+		margin: 0;
 		flex-direction: column;
 		min-width: 9.6rem;
 		height: 100%;
 		align-items: center;
-		border-radius: 1.6rem;
-		padding-block: 3rem;
 		gap: 10rem;
 		justify-content: flex-start;
 	}
@@ -112,7 +121,7 @@ Header
 }
 
 @media (min-width: 1400px) {
-	.header__avatar {
+	.avatar-link {
 		margin-top: auto;
 	}
 }
@@ -221,7 +230,7 @@ Home
 	display: block;
 	position: relative;
 	cursor: pointer;
-	border-radius: 8px;
+	border-radius: 0.8rem;
 	overflow: hidden;
 }
 
@@ -236,10 +245,10 @@ Home
 	color: rgba(255, 255, 255, 0.75);
 	font-weight: 300;
 	font-size: var(--body-m);
-	margin: 8px 0 5px;
+	margin: 0.8rem 0 0.5rem;
 	position: absolute;
-	top: 150px;
-	left: 20px;
+	top: 15rem;
+	left: 2rem;
 }
 
 @media (max-width: 500px) {
@@ -257,8 +266,8 @@ Home
 }
 
 .icon-card {
-	width: 16px !important;
-	height: 16px !important;
+	width: 1.6rem !important;
+	height: 1.6rem !important;
 	object-fit: unset;
 	display: unset;
 }
@@ -288,7 +297,7 @@ Home
 .playBtn img {
 	height: 30px;
 	width: 30px;
-	margin: 0 19px 0 9px;
+	margin: 0 2rem 0 1rem;
 }
 
 .playBtn p {
@@ -315,6 +324,14 @@ Home
 	width: 13px;
 	height: 16px;
 	object-fit: unset;
+}
+
+.bookMarked:is(:hover) {
+	background: var(--white);
+}
+
+.bookMarked:hover .bookMarked-img {
+	filter: invert(1);
 }
 
 @media (min-width: 140px) {
@@ -365,6 +382,14 @@ Home
 	padding: 1rem 1.2rem;
 	background-color: var(--dark-blue-opacity);
 	border-radius: 50%;
+}
+
+.home__card__bookmark:is(:hover) {
+	background: var(--white);
+}
+
+.home__card__bookmark:hover .home__card__icon {
+	filter: invert(1);
 }
 
 .home__card__info {
@@ -440,7 +465,11 @@ Home
 	}
 }
 
-/* Error not found */
+/*
+=============== 
+Error not found
+===============
+*/
 
 .errorHandler {
 	padding-top: 2rem;
@@ -452,7 +481,8 @@ Home
 	gap: 3rem;
 }
 
-.errorHandler svg {
+.errorHandler svg,
+.error-img {
 	width: 15rem;
 	height: 15rem;
 }
@@ -467,4 +497,110 @@ Home
 .errorHandler p {
 	font-size: var(--heading-m);
 	font-weight: 200;
+}
+
+/* Error page */
+
+.errorpage {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	justify-content: space-between;
+	align-items: center;
+	font-size: var(--body-m);
+	font-weight: 200;
+}
+
+.errorpage > svg {
+	margin-bottom: 2rem;
+}
+
+.errorpage > a {
+	color: var(--red);
+	text-decoration: underline;
+}
+
+.errorpage > a:hover {
+	color: var(--red);
+	text-decoration: underline;
+}
+
+/*
+=============== 
+Login / Signup
+===============
+*/
+
+.login {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+	justify-content: space-between;
+	align-items: center;
+	font-size: var(--body-m);
+	font-weight: 200;
+}
+
+@media (max-width: 1400px) {
+	.login {
+		padding-top: 10rem;
+	}
+}
+
+.login-logo {
+	height: 2.2rem;
+	width: 2.8rem;
+}
+
+.login-card {
+	min-width: 34.7rem;
+	min-height: 38.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	background-color: var(--semi-dark-blue);
+	border-radius: 1.6rem;
+	padding: 4rem 3rem;
+}
+
+.login-title {
+	font-size: var(--heading-l);
+}
+
+.login-input {
+	border: none;
+	border-bottom: 1px solid var(--blue);
+	width: 100%;
+	padding: 1rem;
+	background-color: var(--semi-dark-blue);
+	color: var(--white);
+	font-family: "Outfit", sans-serif;
+	font-size: var(--body-m);
+	font-weight: 200;
+	letter-spacing: 0.05rem;
+	caret-color: var(--red);
+}
+
+.submit-btn {
+	margin-top: 1rem;
+	background-color: var(--red);
+	width: 100%;
+	padding-block: 2rem;
+	border-radius: 0.8rem;
+	color: white;
+	font-size: var(--body-m);
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+
+.no-acc {
+	text-align: center;
+	font-weight: 300;
+}
+
+.no-acc > a {
+	padding-left: 1rem;
+	color: red;
 }
