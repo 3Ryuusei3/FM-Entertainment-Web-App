@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.svg";
 export default function SignUp() {
-	const initialValues = { email: "", password: "", repassword: "" };
+	const initialValues = { username: "", email: "", password: "", repassword: "" };
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
 	const [isSubmit, setIsSubmit] = useState(false);
@@ -23,6 +23,13 @@ export default function SignUp() {
 	const validate = (values) => {
 		const errors = {};
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+		if (!values.username) {
+			errors.username = "Required";
+		} else if (values.username.length < 4) {
+			errors.username = "At least 4 characters";
+		} else if (values.username.length > 12) {
+			errors.username = "Cannot exceed 12 characters";
+		}
 		if (!values.email) {
 			errors.email = "Required";
 		} else if (!regex.test(values.email)) {
@@ -48,6 +55,17 @@ export default function SignUp() {
 			</a>
 			<div className="login-card">
 				<p className="login-title">Sign Up</p>
+				<div className="field">
+					<input
+						className="login-input"
+						type="text"
+						placeholder="Username"
+						name="username"
+						value={formValues.username}
+						onChange={handleChange}
+					/>
+					<div className="error-message">{formErrors.username}</div>
+				</div>
 				<div className="field">
 					<input
 						className="login-input"

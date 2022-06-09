@@ -549,10 +549,10 @@ Login / Signup
 
 @media (max-width: 1400px) {
 	.login {
-		padding-top: 10rem;
+		padding-top: 8rem;
 	}
 	.signup {
-		padding-top: 5rem;
+		padding-top: 4rem;
 	}
 }
 
