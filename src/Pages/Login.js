@@ -9,13 +9,13 @@ export default function Login() {
 			</a>
 			<div className="login-card">
 				<p className="login-title">Login</p>
-				<div>
+				<div className="field">
 					<input className="login-input" type="email" placeholder="Email address" name="email" required />
 				</div>
-				<div>
+				<div className="field">
 					<input className="login-input" type="password" placeholder="Password" name="password" required />
 				</div>
-				<div className="clearfix">
+				<div>
 					<button className="submit-btn" type="submit">
 						Login to your account
 					</button>
