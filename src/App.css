@@ -431,6 +431,12 @@ Home
 	min-height: 11rem;
 	min-width: 16.4rem;
 	width: 100%;
+	transform: scale(1);
+	transition: transform 0.2s;
+}
+
+.home__card-recommended:hover {
+	transform: scale(1.02);
 }
 
 @media (min-width: 500px) {
@@ -558,7 +564,7 @@ Login / Signup
 }
 
 .login-card {
-	min-width: 34.7rem;
+	min-width: 36rem;
 	min-height: 38.5rem;
 	display: flex;
 	flex-direction: column;
@@ -568,14 +574,23 @@ Login / Signup
 	padding: 4rem 3rem;
 }
 
+.field {
+	border-bottom: 1px solid var(--blue);
+	width: 100%;
+	display: flex;
+	position: relative;
+}
+
+.field:is(:hover, :focus) {
+	border-bottom: 1px solid var(--white);
+}
+
 .login-title {
 	font-size: var(--heading-l);
 }
 
 .login-input {
 	border: none;
-	border-bottom: 1px solid var(--blue);
-	width: 100%;
 	padding: 1rem;
 	background-color: var(--semi-dark-blue);
 	color: var(--white);
@@ -586,16 +601,32 @@ Login / Signup
 	caret-color: var(--red);
 }
 
+.error-message {
+	color: var(--red);
+	align-self: center;
+	position: absolute;
+	width: 50%;
+	left: 50%;
+	background-color: var(--semi-dark-blue);
+	z-index: 5;
+	text-align: right;
+}
+
 .submit-btn {
 	margin-top: 1rem;
-	background-color: var(--red);
 	width: 100%;
 	padding-block: 2rem;
 	border-radius: 0.8rem;
-	color: white;
-	font-size: var(--body-m);
+	background-color: var(--red);
+	color: var(--white);
+	font-size: var(--heading-xs);
 	font-weight: 300;
 	letter-spacing: 0.05rem;
+}
+
+.submit-btn:is(:hover) {
+	background-color: var(--white);
+	color: var(--semi-dark-blue);
 }
 
 .no-acc {
