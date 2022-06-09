@@ -540,7 +540,7 @@ Login / Signup
 	margin: auto;
 	display: flex;
 	flex-direction: column;
-	gap: 5rem;
+	gap: 3rem;
 	justify-content: space-between;
 	align-items: center;
 	font-size: var(--body-m);
@@ -549,7 +549,7 @@ Login / Signup
 
 @media (max-width: 1400px) {
 	.login {
-		padding-top: 8rem;
+		padding-top: 9rem;
 	}
 	.signup {
 		padding-top: 4rem;
@@ -590,6 +590,7 @@ Login / Signup
 .login-input {
 	border: none;
 	padding: 1rem;
+	width: 100%;
 	background-color: var(--semi-dark-blue);
 	color: var(--white);
 	font-family: "Outfit", sans-serif;
@@ -604,7 +605,7 @@ Login / Signup
 	align-self: center;
 	position: absolute;
 	width: 50%;
-	left: 50%;
+	left: 49%;
 	background-color: var(--semi-dark-blue);
 	z-index: 5;
 	text-align: right;
