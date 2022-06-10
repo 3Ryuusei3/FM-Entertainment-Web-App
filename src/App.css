@@ -52,6 +52,10 @@ body {
 	}
 }
 
+.inactive {
+	display: none;
+}
+
 /*
 =============== 
 Header
@@ -553,7 +557,7 @@ Login / Signup
 	}
 	.signup {
 		padding-top: 4rem;
-		padding-bottom: 2rem;
+		padding-bottom: 3rem;
 	}
 }
 
@@ -574,14 +578,9 @@ Login / Signup
 }
 
 .field {
-	border-bottom: 1px solid var(--blue);
 	width: 100%;
 	display: flex;
-	position: relative;
-}
-
-.field:is(:hover, :focus) {
-	border-bottom: 1px solid var(--white);
+	flex-direction: column;
 }
 
 .login-title {
@@ -590,6 +589,7 @@ Login / Signup
 
 .login-input {
 	border: none;
+	border-bottom: 1px solid var(--blue);
 	padding: 1rem;
 	width: 100%;
 	background-color: var(--semi-dark-blue);
@@ -601,15 +601,21 @@ Login / Signup
 	caret-color: var(--red);
 }
 
+.login-input:is(:hover, :focus) {
+	border-bottom: 1px solid var(--white);
+}
+
+.invalid-input {
+	border-bottom: 1px solid var(--red);
+}
+
 .error-message {
+	padding-left: 1.2rem;
 	color: var(--red);
-	align-self: center;
-	position: absolute;
-	width: 50%;
-	left: 49%;
-	background-color: var(--semi-dark-blue);
-	z-index: 5;
-	text-align: right;
+	padding-top: 2rem;
+	align-self: left;
+	background-color: var(--dark-blue);
+	border-radius: 0.8rem;
 }
 
 .submit-btn {
@@ -642,4 +648,9 @@ Login / Signup
 .no-acc > a:hover {
 	padding-left: 1rem;
 	color: red;
+}
+
+.success-card {
+	min-width: 36rem;
+	min-height: 20rem;
 }

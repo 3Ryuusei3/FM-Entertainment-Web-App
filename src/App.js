@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./Reset.css";
@@ -7,8 +8,8 @@ import Video from "./Pages/Video";
 import Tv from "./Pages/Tv";
 import Bookmark from "./Pages/Bookmark";
 import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp.js";
 import ErrorPage from "./Pages/ErrorPage";
+import SignUp from "./Pages/Signup";
 import { data } from "./Data.js";
 
 function App() {

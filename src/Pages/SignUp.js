@@ -1,113 +1,170 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.svg";
-export default function SignUp() {
-	const initialValues = { username: "", email: "", password: "", repassword: "" };
-	const [formValues, setFormValues] = useState(initialValues);
-	const [formErrors, setFormErrors] = useState({});
-	const [isSubmit, setIsSubmit] = useState(false);
+import axios from "axios";
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormValues({ ...formValues, [name]: value });
-	};
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setFormErrors(validate(formValues));
-		setIsSubmit(true);
-	};
+export default function Register() {
+	const USERNAME_REGEX = /^[A-z][A-z0-9]{5,23}$/;
+	const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
+	const PWD_REGEX = /^(?=.*[A-z])(?=.*[0-9]).{5,24}$/;
+	const SIGNUP_URL = "https://manuflix.herokuapp.com/signup";
+
+	const [username, setUsername] = useState("");
+	const [validUsername, setValidUsername] = useState(false);
+
+	const [email, setEmail] = useState("");
+	const [validEmail, setValidEmail] = useState(false);
+
+	const [password, setPassword] = useState("");
+	const [validPassword, setValidPassword] = useState(false);
+
+	const [matchPassword, setMatchPassword] = useState("");
+	const [validMatch, setValidMatch] = useState(false);
+
+	const [, /* errMsg */ setErrMsg] = useState("");
+	const [success, setSuccess] = useState(false);
+
 	useEffect(() => {
-		if (Object.keys(formErrors).length === 0 && isSubmit) {
-			console.log(formValues);
+		const USERNAME_REGEX = /^[A-z][A-z0-9]{5,23}$/;
+		setValidUsername(USERNAME_REGEX.test(username));
+	}, [username]);
+
+	useEffect(() => {
+		const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
+		setValidEmail(EMAIL_REGEX.test(email));
+	}, [email]);
+
+	useEffect(() => {
+		const PWD_REGEX = /^(?=.*[A-z])(?=.*[0-9]).{5,24}$/;
+		setValidPassword(PWD_REGEX.test(password));
+		setValidMatch(password === matchPassword);
+	}, [password, matchPassword]);
+
+	useEffect(() => {
+		setErrMsg("");
+	}, [username, email, password, matchPassword]);
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		// if button enabled with JS hack
+		const v1 = USERNAME_REGEX.test(username);
+		const v2 = EMAIL_REGEX.test(email);
+		const v3 = PWD_REGEX.test(password);
+		if (!v1 || !v2 || !v3) {
+			setErrMsg("Invalid Entry");
+			return;
 		}
-	}, [formErrors, isSubmit, formValues]);
-	const validate = (values) => {
-		const errors = {};
-		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-		if (!values.username) {
-			errors.username = "Required";
-		} else if (values.username.length < 4) {
-			errors.username = "At least 4 characters";
-		} else if (values.username.length > 12) {
-			errors.username = "Cannot exceed 12 characters";
+		try {
+			await axios.post(SIGNUP_URL, JSON.stringify({ username, email, password }), {
+				headers: { "Content-Type": "application/json" },
+			});
+			setSuccess(true);
+		} catch (err) {
+			if (!err?.response) {
+				setErrMsg("No server response");
+			} else if (err.response?.status === 409) {
+				setErrMsg("Username taken");
+			} else {
+				setErrMsg("Registration Failed");
+			}
 		}
-		if (!values.email) {
-			errors.email = "Required";
-		} else if (!regex.test(values.email)) {
-			errors.email = "Invalid";
-		}
-		if (!values.password) {
-			errors.password = "Required";
-		} else if (values.password.length < 6) {
-			errors.password = "At least 6 characters";
-		} else if (values.password.length > 12) {
-			errors.password = "Cannot exceed 12 characters";
-		}
-		if (values.repassword !== values.password) {
-			errors.repassword = "Must match";
-		}
-		return errors;
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="login signup">
-			<a href="/">
-				<img className="login-logo" src={logo} alt="Logo" />
-			</a>
-			<div className="login-card">
-				<p className="login-title">Sign Up</p>
-				<div className="field">
-					<input
-						className="login-input"
-						type="text"
-						placeholder="Username"
-						name="username"
-						value={formValues.username}
-						onChange={handleChange}
-					/>
-					<div className="error-message">{formErrors.username}</div>
+		<>
+			{success ? (
+				<div className="login">
+					<div className="login-card success-card">
+						<p className="login-title">Success!</p>
+						<a href="/login">
+							<button className="submit-btn">Click here to log in!</button>
+						</a>
+					</div>
 				</div>
-				<div className="field">
-					<input
-						className="login-input"
-						type="email"
-						placeholder="Email address"
-						name="email"
-						value={formValues.email}
-						onChange={handleChange}
-					/>
-					<div className="error-message">{formErrors.email}</div>
-				</div>
-				<div className="field">
-					<input
-						className="login-input"
-						type="password"
-						placeholder="Password"
-						name="password"
-						value={formValues.password}
-						onChange={handleChange}
-					/>
-					<div className="error-message">{formErrors.password}</div>
-				</div>
-				<div className="field">
-					<input
-						className="login-input"
-						type="password"
-						placeholder="Repeat Password"
-						name="repassword"
-						value={formValues.repassword}
-						onChange={handleChange}
-					/>
-					<div className="error-message">{formErrors.repassword}</div>
-				</div>
-				<div className="clearfix">
-					<button className="submit-btn" type="submit">
-						Create an account
-					</button>
-				</div>
-				<p className="no-acc">
-					Already have an account? <a href="/login">Login</a>
-				</p>
-			</div>
-		</form>
+			) : (
+				<form className="login signup" onSubmit={handleSubmit}>
+					<a href="/">
+						<img className="login-logo" src={logo} alt="Logo" />
+					</a>
+					<div className="login-card">
+						<p className="login-title">Sign Up</p>
+						<div className="field">
+							<label htmlFor="username"></label>
+							<input
+								className={username && !validUsername ? "login-input invalid-input" : "login-input"}
+								id="username"
+								type="text"
+								placeholder="Username"
+								name="username"
+								autoComplete="off"
+								required
+								onChange={(e) => setUsername(e.target.value)}
+							/>
+							<div className={username && !validUsername ? "error-message" : "inactive"}>
+								6-24 characters. Must start with a letter.
+								<br /> Only letters and numbers.
+							</div>
+						</div>
+						<div className="field">
+							<label htmlFor="email"></label>
+							<input
+								className={email && !validEmail ? "login-input invalid-input" : "login-input"}
+								id="email"
+								type="email"
+								placeholder="Email address"
+								name="email"
+								autoComplete="off"
+								required
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+							<div className={email && !validEmail ? "error-message" : "inactive"}>Enter a valid email.</div>
+						</div>
+						<div className="field">
+							<label htmlFor="password"></label>
+							<input
+								className={password && !validPassword ? "login-input invalid-input" : "login-input"}
+								id="password"
+								type="password"
+								placeholder="Password"
+								name="password"
+								required
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+							<div className={password && !validPassword ? "error-message" : "inactive"}>
+								6-24 characters. Must include a number
+								<br />
+								and a letter.
+							</div>
+						</div>
+						<div className="field">
+							<label htmlFor="repassword"></label>
+							<input
+								className={password && !validPassword ? "login-input invalid-input" : "login-input"}
+								id="repassword"
+								type="password"
+								placeholder="Repeat Password"
+								name="repassword"
+								required
+								onChange={(e) => setMatchPassword(e.target.value)}
+							/>
+							<div className={matchPassword && !validMatch ? "error-message" : "inactive"}>
+								Must match the password above.
+							</div>
+						</div>
+						<div className="clearfix">
+							<button
+								className="submit-btn"
+								type="submit"
+								disabled={!validUsername || !validPassword || !validMatch ? true : false}
+							>
+								Create an account
+							</button>
+						</div>
+						<p className="no-acc">
+							Already have an account? <a href="/login">Login</a>
+						</p>
+					</div>
+				</form>
+			)}
+		</>
 	);
 }
