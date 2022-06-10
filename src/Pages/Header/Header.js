@@ -16,7 +16,7 @@ export default function Header() {
 		location.pathname === "/tv" ||
 		location.pathname === "/bookmark" ? (
 		<nav className="header">
-			<a href="/">
+			<a href="/home">
 				<img className="header__logo" src={logo} alt="Logo" />
 			</a>
 			<div className="header__nav">
