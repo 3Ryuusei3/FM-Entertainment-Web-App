@@ -138,7 +138,7 @@ Landing
 
 @media (max-width: 600px) {
 	.landing-nav {
-		padding: 3rem 4rem;
+		padding: 3rem 3rem;
 	}
 
 	.landing-title {
@@ -154,8 +154,8 @@ Landing
 	}
 
 	.landing-btn {
-		padding: 1.5rem 3rem;
-		font-size: var(--heading-s);
+		padding: 1.25rem 2.5rem;
+		font-size: var(--heading-xs);
 	}
 }
 
