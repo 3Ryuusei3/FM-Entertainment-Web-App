@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
-import avatar from "../assets/image-avatar.png";
+import { UserContext } from "../../context/UserContext";
+import logo from "../../assets/logo.svg";
+import avatar from "../../assets/image-avatar.png";
 
 export default function Header() {
+	const { setUsername } = useContext(UserContext);
 	const location = useLocation();
-	return location.pathname === "/" ||
+	const handleLogout = (e) => {
+		setUsername({});
+	};
+
+	return location.pathname === "/home" ||
 		location.pathname === "/movies" ||
 		location.pathname === "/tv" ||
 		location.pathname === "/bookmark" ? (
@@ -47,8 +53,9 @@ export default function Header() {
 					</svg>
 				</NavLink>
 			</div>
-			<a className="avatar-link" href="/login">
+			<a className="avatar-link" href="/login" onClick={handleLogout}>
 				<img className="header__avatar" src={avatar} alt="Avatar" />
+				{/* <p className="header__avatar">{username.charAt(0).toUppercase()}</p> */}
 			</a>
 		</nav>
 	) : (

@@ -94,7 +94,6 @@ export default function Register() {
 								id="username"
 								type="text"
 								placeholder="Username"
-								name="username"
 								autoComplete="off"
 								required
 								onChange={(e) => setUsername(e.target.value)}
@@ -111,7 +110,6 @@ export default function Register() {
 								id="email"
 								type="email"
 								placeholder="Email address"
-								name="email"
 								autoComplete="off"
 								required
 								onChange={(e) => setEmail(e.target.value)}
@@ -125,7 +123,6 @@ export default function Register() {
 								id="password"
 								type="password"
 								placeholder="Password"
-								name="password"
 								required
 								onChange={(e) => setPassword(e.target.value)}
 							/>
