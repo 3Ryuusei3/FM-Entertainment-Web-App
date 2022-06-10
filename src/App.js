@@ -9,7 +9,7 @@ import Tv from "./Pages/Tv";
 import Bookmark from "./Pages/Bookmark";
 import Login from "./Pages/Login";
 import ErrorPage from "./Pages/ErrorPage";
-import SignUp from "./Pages/Signup";
+import Signup from "./Pages/Signup";
 import { data } from "./Data.js";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 					<Route path="/tv" element={<Tv data={data} />} />
 					<Route path="/bookmark" element={<Bookmark data={data} />} />
 					<Route path="/login" element={<Login />} />
-					<Route path="/signup" element={<SignUp />} />
+					<Route path="/signup" element={<Signup />} />
 					<Route path="/*" element={<ErrorPage />} />
 				</Routes>
 			</div>
