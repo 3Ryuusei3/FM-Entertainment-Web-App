@@ -168,7 +168,7 @@ Header
 
 .header {
 	background-color: var(--semi-dark-blue);
-	height: 6rem;
+	min-height: 6rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -189,7 +189,7 @@ Header
 		padding-block: 3rem;
 		margin: 0;
 		flex-direction: column;
-		min-width: 9.6rem;
+		min-width: 9rem;
 		height: 100%;
 		align-items: center;
 		gap: 10rem;

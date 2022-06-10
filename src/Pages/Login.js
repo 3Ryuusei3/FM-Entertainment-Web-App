@@ -38,7 +38,7 @@ export default function Login() {
 				<div className="login">
 					<div className="login-card success-card">
 						<p className="login-title">{`Welcome ${username.username}!`}</p>
-						<a href="/">
+						<a href="/home">
 							<button className="submit-btn">Go to the Home page</button>
 						</a>
 					</div>
