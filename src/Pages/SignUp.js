@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.svg";
 import axios from "axios";
 
-export default function Register() {
+export default function Signup() {
 	const USERNAME_REGEX = /^[A-z][A-z0-9]{5,23}$/;
 	const EMAIL_REGEX = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 	const PWD_REGEX = /^(?=.*[A-z])(?=.*[0-9]).{5,24}$/;
