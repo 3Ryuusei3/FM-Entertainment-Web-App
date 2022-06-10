@@ -79,6 +79,12 @@ Landing
 	height: 100%;
 }
 
+@media (min-width: 1400px) {
+	.landing {
+		transform: scale(1.03, 1.07);
+	}
+}
+
 .landing-nav {
 	height: max-content;
 	padding: 3rem 5rem;
