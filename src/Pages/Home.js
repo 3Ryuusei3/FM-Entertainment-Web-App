@@ -15,6 +15,12 @@ export default function Home({ data }) {
 			setDataNotTrending(data.filter((data) => !data.isTrending));
 		}
 	};
+	/* 	const [currentTitle, setCurrentTitle] = useState("");
+	const bookmarkHandler = (title) => {
+		setCurrentTitle(title.isBookmarked);
+
+		console.log(title);
+	}; */
 	const cardsMapping = dataNotTrending.map((data, idx) => (
 		<div key={idx} className="home__card-container-recommended">
 			<div
@@ -23,7 +29,7 @@ export default function Home({ data }) {
 					backgroundImage: `url(${data.thumbnail.regular.large})`,
 				}}
 			>
-				<div className="home__card__bookmark">
+				<div className="home__card__bookmark" /* onClick={() => bookmarkHandler(data)} */>
 					<img
 						className="home__card__icon"
 						src={!data.isBookmarked ? bookmarkEmptyIcon : bookmarkFullIcon}

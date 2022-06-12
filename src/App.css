@@ -490,6 +490,7 @@ Home
 	padding: 1rem 1.2rem;
 	background-color: var(--dark-blue-opacity);
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .home__card__bookmark:is(:hover) {
